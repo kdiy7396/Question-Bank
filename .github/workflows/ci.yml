@@ -25,7 +25,7 @@ jobs:
       - name: Build Android APK
         run: cd android && ./gradlew assembleRelease
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: quizapp-android-apk
           path: android/app/build/outputs/apk/release/app-release.apk
@@ -43,7 +43,7 @@ jobs:
           xcodebuild -exportArchive -archivePath App.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath .
       - name: Upload IPA
         if: runner.os == 'macOS'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: quizapp-ios-ipa
           path: ios/App/*.ipa
