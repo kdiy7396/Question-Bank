@@ -3,7 +3,7 @@ name: Build Flutter APK
 on:
   push:
     branches:
-      - gork
+      - gork  # 你的默认分支名称
 
 jobs:
   build:
@@ -11,15 +11,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      # 设置 Java 环境
       - uses: actions/setup-java@v3
         with:
           java-version: '11'
+          distribution: 'temurin'  # 添加 distribution 参数
+          java-package: jdk
+          check-latest: false
+
+      # 设置 Flutter 环境
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.x'
           channel: 'stable'
+
+      # 安装依赖
       - run: flutter pub get
+
+      # 构建 APK
       - run: flutter build apk --release
+
+      # 上传构建产物
       - uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
