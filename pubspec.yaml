@@ -1,0 +1,22 @@
+name: quiz_app
+description: A quiz app with local question bank and wrong question management.
+version: 1.0.0
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  file_picker: ^6.2.1          # 文件选择
+  excel: ^4.0.6               # Excel 文件解析
+  docx_template: ^0.4.2       # Word 文件解析
+  sqflite: ^2.3.3+1           # 本地数据库
+  path_provider: ^2.1.5       # 文件路径
+  provider: ^6.1.2            # 状态管理
+  path: ^1.9.0               # 路径操作
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
