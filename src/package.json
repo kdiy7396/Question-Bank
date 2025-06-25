@@ -1,0 +1,22 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "android": "npx cap sync android && cd android && ./gradlew assembleRelease",
+    "ios": "npx cap sync ios && cd ios/App && xcodebuild -scheme App -configuration Release"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "xlsx": "^0.18.0",
+    "docx-preview": "^4.1.0",
+    "@capacitor/core": "^5.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "@capacitor/cli": "^5.0.0"
+  }
+}
