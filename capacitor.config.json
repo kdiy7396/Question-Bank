@@ -1,6 +1,0 @@
-{
-  "appId": "com.example.quizapp",
-  "appName": "QuizApp",
-  "webDir": "build",
-  "bundledWebRuntime": false
-}
