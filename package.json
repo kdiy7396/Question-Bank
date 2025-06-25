@@ -11,7 +11,7 @@
   "react": "^18.0.0",
   "react-dom": "^18.0.0",
   "xlsx": "^0.18.0",
-  "docx-preview": "1.7.0",
+  "docx-preview": "^0.4.1",
   "@capacitor/core": "^5.0.0"
 },
   "devDependencies": {
