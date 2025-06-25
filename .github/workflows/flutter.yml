@@ -3,7 +3,7 @@ name: Build Flutter APK and Release
 on:
   push:
     branches:
-      - main
+      - gork
 
 jobs:
   build:
