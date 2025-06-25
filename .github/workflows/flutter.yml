@@ -1,9 +1,9 @@
-name: Build Flutter APK
+name: Build Flutter APK and Release
 
 on:
   push:
     branches:
-      - main  # 你的默认分支名称
+      - main
 
 jobs:
   build:
@@ -11,30 +11,32 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      # 设置 Java 环境
       - uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'temurin'  # 添加 distribution 参数
+          distribution: 'temurin'
           java-package: jdk
-          check-latest: false
-
-      # 设置 Flutter 环境
+          check-latest: true
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.x'
-          channel: 'stable'
-
-      # 清理缓存并安装依赖
+          flutter-version: '3.29.x'
+          channel: stable
       - run: flutter clean
       - run: flutter pub get
-
-      # 构建 APK
       - run: flutter build apk --release
-
-      # 上传构建产物
       - uses: actions/upload-artifact@v4
         with:
           name: app-release.apk
           path: build/app/outputs/flutter-apk/app-release.apk
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        with:
+          tag_name: v${{ github.run_number }}
+          name: Release v${{ github.run_number }}
+          body: Auto-generated release for commit ${{ github.sha }}.
+          draft: false
+          prerelease: false
+          files: build/app/outputs/flutter-apk/app-release.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
