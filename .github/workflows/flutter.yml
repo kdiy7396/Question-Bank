@@ -3,7 +3,7 @@ name: Build Flutter APK
 on:
   push:
     branches:
-      - gork  # 你的默认分支名称
+      - main  # 你的默认分支名称
 
 jobs:
   build:
